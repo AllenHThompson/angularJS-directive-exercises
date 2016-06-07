@@ -1,0 +1,40 @@
+<!-- # Angular Directives Exercises
+
+Make a "Good Job" Directive. Used like this: `<good-job name="'Amjad'"></good-job>`. Which displays "Good job, Amjad!". You can optionally use a scope property instead of a string literal to set the name. Hint: use hello2.html as an example. -->
+
+<!DOCTYPE html>
+<html>
+     <head>
+
+          <meta charset="utf-8">
+          <title>Good Job Directives</title>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+          <script>
+               var app = angular.module('app', []);
+
+               app.controller('MyController', function($scope) {
+                    $scope.name = 'Amjad';
+               })
+
+               app.directive('goodJobDirective', function(){
+                    return {
+
+                         scope: {
+
+                         subject: '='
+
+                         },
+
+                         template: '<h1>Good job, {{ subject }}!</h1>'
+                    };
+               });
+          </script>
+
+     </head>
+     <body ng-app="app" ng-controller="MyController">
+
+          <good-job-directive subject="name"></good-job-directive>
+
+     </body>
+</html>
